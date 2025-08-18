@@ -72,7 +72,7 @@ func (u *userServiceImpl) LoginUser(ctx context.Context, email string, password 
 	}
 
 	if !helper.VerifyPassword(user.Password, password) {
-		return "", http.StatusBadRequest, fmt.Errorf("invalid nra or password: %v", err)
+		return "", http.StatusBadRequest, fmt.Errorf("invalid email or password: %v", err)
 	}
 
 	token, err := helper.GenerateJWT(email, user.Nama)
