@@ -1,89 +1,141 @@
-# Proyek Aplikasi E-commerce
+🛒 e-commerce-expo-go-api
 
-Proyek ini terdiri dari dua bagian utama: aplikasi frontend mobile yang dibangun dengan Expo dan backend API yang dikembangkan dengan bahasa Go.
+Aplikasi backend untuk platform e-commerce yang dibangun dengan Go, dirancang untuk melayani aplikasi frontend Expo. API ini mengelola fungsionalitas inti seperti manajemen pengguna dan database.
+✨ Fitur & Tools
+Fitur Utama
 
----
+    ✅ Arsitektur Berlapis: Kode terstruktur dengan baik menggunakan pola controller, service, dan repository untuk pemisahan tanggung jawab.
 
-## Fitur & Tools
+    🔒 API Autentikasi: Endpoint untuk mendaftarkan dan mengautentikasi pengguna dengan aman.
 
-### Fitur Utama
-* **Antarmuka Dinamis**: Halaman beranda dengan tampilan yang berubah saat pengguna menggulir ke bawah, menampilkan banner promosi, produk diskon, dan produk baru.
-* **Alur Pengguna**: Implementasi lengkap untuk login, pendaftaran, dan pemulihan kata sandi.
-* **Navigasi Berbasis Tab**: Navigasi yang mudah dengan tab Home, Shop, Favorite, dan Bag.
-* **Tampilan Kategori**: Halaman Shop yang menampilkan kategori utama dan daftar sub-kategori yang berbeda.
-* **Keranjang dan Favorit**: Fungsionalitas untuk mengelola daftar produk favorit dan keranjang belanja.
-* **Arsitektur Berlapis**: Kode terstruktur dengan baik menggunakan pola controller, service, dan repository untuk pemisahan tanggung jawab.
-* **API Autentikasi**: Endpoint untuk mendaftarkan dan mengautentikasi pengguna dengan aman.
-* **Migrasi Database**: Mengelola skema database MySQL secara terstruktur dan versioning dengan `golang-migrate/migrate`.
-* **Manajemen Konfigurasi**: Menggunakan file `.env` untuk mengelola kredensial dan konfigurasi server dengan aman.
+    🚀 Migrasi Database: Mengelola skema database MySQL secara terstruktur dan versioning dengan golang-migrate/migrate.
 
-### Tools yang Digunakan
-* **Go**: Bahasa pemrograman backend.
-* **MySQL**: Sistem manajemen database.
-* **Expo**: Framework frontend yang terhubung dengan API ini.
-* **HTTPRouter**: Router HTTP untuk Go.
-* **GoDotenv**: Untuk mengelola variabel lingkungan dari file `.env`.
-* **golang-migrate/migrate**: Library untuk migrasi database.
-* **Go-Blueprint**: Alat untuk membuat struktur proyek Go secara otomatis.
+    ⚙️ Manajemen Konfigurasi: Menggunakan file .env untuk mengelola kredensial dan konfigurasi sensitif.
 
----
+Tools yang Digunakan
 
-## Memulai
+    🐹 Go: Bahasa pemrograman backend.
 
-Ikuti langkah-langkah di bawah ini untuk menjalankan frontend dan backend secara lokal.
+    💾 MySQL: Sistem manajemen database.
 
-### ⚙️ Backend Setup
+    🌐 HTTPRouter: Router HTTP untuk Go.
 
-1.  **Prasyarat**: Pastikan Anda telah menginstal **Go**, **MySQL Server**, dan **Git**.
-2.  **Clone Repositori**:
-    ```bash
-    git clone [https://github.com/Nur-Hidayat-FTI22E/e-commerce-expo-go-api.git](https://github.com/Nur-Hidayat-FTI22E/e-commerce-expo-go-api.git)
+    🔑 GoDotenv: Untuk mengelola variabel lingkungan dari file .env.
+
+    🚀 golang-migrate/migrate: Library untuk migrasi database.
+
+    🛠️ Go-Blueprint: Alat untuk membuat struktur proyek Go secara otomatis.
+
+🚀 Memulai
+
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal.
+Prasyarat
+
+Pastikan Anda memiliki:
+
+    ✅ Go (versi 1.18 atau lebih baru)
+
+    ✅ MySQL Server
+
+    ✅ Git
+
+Instalasi
+
+    Clone repositori ini:
+
+    git clone https://github.com/Nur-Hidayat-FTI22E/e-commerce-expo-go-api.git
     cd e-commerce-expo-go-api
-    ```
-3.  **Instal Dependensi**:
-    ```bash
+
+    Instal dependensi Go:
+
     go mod tidy
-    ```
-4.  **Konfigurasi Database**:
-    * Buat database MySQL baru secara manual (misalnya, `e-commerce`).
-    * Buat file `.env` di root proyek dan tambahkan konfigurasi berikut:
-        ```
-        DB_NAME="e-commerce"
-        DB_USER="root"
-        DB_PASS="your_password"
-        DB_HOST="127.0.0.1"
-        DB_PORT="3306"
-        APP_PORT="8087"
-        ```
-5.  **Jalankan Migrasi**:
-    * Jalankan migrasi untuk membuat tabel `users`:
-        ```bash
-        go run main.go
-        ```
-    * Server akan otomatis menjalankan migrasi. Jika tidak ada error, tabel `users` akan dibuat di database Anda.
 
-### 📱 Frontend Setup
+Konfigurasi
 
-1.  **Prasyarat**: Pastikan Anda telah menginstal **Node.js**, **npm**, dan aplikasi **Expo Go** di ponsel Anda.
-2.  **Instal Dependensi**: Masuk ke folder frontend dan jalankan:
-    ```bash
-    npm install
-    ```
-3.  **Jalankan Aplikasi**:
-    ```bash
-    npx expo start
-    ```
-    * Pindai kode QR yang muncul di terminal dengan aplikasi Expo Go Anda.
-    * Jika terjadi masalah koneksi, coba alihkan ke mode **`Tunnel`** dengan menekan `Shift` + `M` dan memilih opsi `Connection`.
-4.  **Integrasi dengan Backend**: Pastikan `API_URL` di file `authService.ts` Anda menunjuk ke alamat IP lokal komputer Anda dan port yang benar (misalnya `http://192.168.1.10:8087`) agar dapat berkomunikasi dengan backend Go Anda.
+    Buat database MySQL baru secara manual (misalnya, e-commerce).
 
----
+    Buat file .env di root proyek dan tambahkan konfigurasi berikut:
 
-## Menggunakan Go-Blueprint
+    DB_NAME="e-commerce"
+    DB_USER="root"
+    DB_PASS="your_password"
+    DB_HOST="127.0.0.1"
+    DB_PORT="3306"
+    APP_PORT="8087"
 
-**Go-Blueprint** adalah sebuah *scaffolding tool* yang membantu Anda membuat struktur proyek Go dengan cepat. Anda dapat menggunakannya untuk memulai proyek baru dengan arsitektur yang terorganisir.
+    Jalankan migrasi database untuk membuat tabel users:
 
-### Instalasi Go-Blueprint
+    go run main.go
+
+    Server akan otomatis menjalankan migrasi. Jika tidak ada error, tabel users akan dibuat di database Anda.
+
+Menjalankan Server
+
+Jalankan server aplikasi dari root proyek:
+
+go run main.go
+
+Server akan berjalan di http://localhost:8087.
+Menggunakan Go-Blueprint
+
+Go-Blueprint adalah sebuah scaffolding tool yang membantu Anda membuat struktur proyek Go dengan cepat.
+Instalasi
+
 Anda dapat menginstalnya dengan perintah Go:
-```bash
-go install [github.com/go-furnace/go-blueprint@latest](https://github.com/go-furnace/go-blueprint@latest)
+
+go install github.com/Melkeydev/go-blueprint@latest
+
+Cara Penggunaan
+
+Untuk membuat proyek baru dari awal, Anda akan menjalankan perintah go-blueprint dan memilih arsitektur yang Anda inginkan. Contoh:
+
+go-blueprint
+
+Tautan ke sumber daya Go-Blueprint: https://github.com/Melkeydev/go-blueprint.git
+📁 Struktur Proyek
+
+Proyek ini menggunakan arsitektur berlapis untuk pemisahan tanggung jawab yang jelas. Berikut adalah penjelasan singkat tentang setiap folder:
+
+    config/: Berisi konfigurasi untuk koneksi database.
+
+    controller/: Menangani permintaan HTTP dan respons API.
+
+    dto/: Berisi objek transfer data.
+
+    helper/: Berisi fungsi-fungsi utilitas untuk penanganan error dan JWT.
+
+    migrations/: Menyimpan file-file migrasi SQL untuk mengelola skema database.
+
+    model/: Berisi model data untuk entitas database.
+
+    repository/: Berisi logika untuk berinteraksi langsung dengan database.
+
+    service/: Berisi logika bisnis utama aplikasi.
+
+🔗 API Endpoints
+
+Berikut adalah daftar API endpoints yang tersedia untuk manajemen pengguna:
+
+    POST /api/v1/user
+
+        Deskripsi: Mendaftarkan pengguna baru dengan payload JSON yang berisi nama, email, dan password.
+
+    POST /api/v1/user/login
+
+        Deskripsi: Autentikasi pengguna dengan payload JSON yang berisi email dan password.
+
+📚 Pelajari Lebih Lanjut
+
+Untuk mempelajari lebih lanjut tentang pengembangan Go, lihat sumber daya berikut:
+
+    Dokumentasi Go: Pelajari dasar-dasar, atau selami topik-topik lanjutan dengan tutorial dan panduan resmi.
+
+    Go by Example: Ikuti tutorial langkah demi langkah untuk memahami bahasa Go.
+
+🤝 Bergabung dengan Komunitas
+
+Bergabunglah dengan komunitas developer yang membuat aplikasi Go yang hebat.
+
+    Go on GitHub: Lihat platform open source dan berkontribusi.
+
+    Komunitas Discord Go: Mengobrol dengan pengguna Go dan mengajukan pertanyaan.
