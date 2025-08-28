@@ -1,141 +1,176 @@
-🛒 e-commerce-expo-go-api
+# 🛒 e-commerce-expo-go-api
 
-Aplikasi backend untuk platform e-commerce yang dibangun dengan Go, dirancang untuk melayani aplikasi frontend Expo. API ini mengelola fungsionalitas inti seperti manajemen pengguna dan database.
-✨ Fitur & Tools
-Fitur Utama
+**Backend API untuk platform e-commerce** yang dibangun dengan **Go**, dirancang untuk melayani aplikasi frontend berbasis **Expo**.  
+API ini mengelola fungsionalitas inti seperti **manajemen pengguna**, **autentikasi**, dan **database**.
 
-    ✅ Arsitektur Berlapis: Kode terstruktur dengan baik menggunakan pola controller, service, dan repository untuk pemisahan tanggung jawab.
+---
 
-    🔒 API Autentikasi: Endpoint untuk mendaftarkan dan mengautentikasi pengguna dengan aman.
+## ✨ Fitur Utama
 
-    🚀 Migrasi Database: Mengelola skema database MySQL secara terstruktur dan versioning dengan golang-migrate/migrate.
+- ✅ **Arsitektur Berlapis** – Controller – Service – Repository
+- 🔒 **Autentikasi API** – Registrasi & login dengan JWT
+- 🚀 **Migrasi Database** – Menggunakan [golang-migrate](https://github.com/golang-migrate/migrate)
+- ⚙️ **Manajemen Konfigurasi** – File `.env`
 
-    ⚙️ Manajemen Konfigurasi: Menggunakan file .env untuk mengelola kredensial dan konfigurasi sensitif.
+---
 
-Tools yang Digunakan
+## 🛠️ Tools yang Digunakan
 
-    🐹 Go: Bahasa pemrograman backend.
+- 🐹 Go – Backend utama
+- 💾 MySQL – Database
+- 🌐 HTTPRouter – Routing
+- 🔑 GoDotenv – Konfigurasi environment
+- 🚀 golang-migrate – Migrasi DB
+- 🛠️ Go-Blueprint – Scaffolding
 
-    💾 MySQL: Sistem manajemen database.
+---
 
-    🌐 HTTPRouter: Router HTTP untuk Go.
+## 🚀 Memulai
 
-    🔑 GoDotenv: Untuk mengelola variabel lingkungan dari file .env.
+### 📋 Prasyarat
+- Go v1.18+
+- MySQL
+- Git
 
-    🚀 golang-migrate/migrate: Library untuk migrasi database.
+### 🔧 Instalasi
 
-    🛠️ Go-Blueprint: Alat untuk membuat struktur proyek Go secara otomatis.
+```bash
+# Clone repo
+git clone https://github.com/Nur-Hidayat-FTI22E/e-commerce-expo-go-api.git
+cd e-commerce-expo-go-api
 
-🚀 Memulai
+# Install dependency
+go mod tidy
 
-Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal.
-Prasyarat
+# Setup .env
+DB_NAME="e-commerce"
+DB_USER="root"
+DB_PASS="your_password"
+DB_HOST="127.0.0.1"
+DB_PORT="3306"
+APP_PORT="8087"
 
-Pastikan Anda memiliki:
-
-    ✅ Go (versi 1.18 atau lebih baru)
-
-    ✅ MySQL Server
-
-    ✅ Git
-
-Instalasi
-
-    Clone repositori ini:
-
-    git clone https://github.com/Nur-Hidayat-FTI22E/e-commerce-expo-go-api.git
-    cd e-commerce-expo-go-api
-
-    Instal dependensi Go:
-
-    go mod tidy
-
-Konfigurasi
-
-    Buat database MySQL baru secara manual (misalnya, e-commerce).
-
-    Buat file .env di root proyek dan tambahkan konfigurasi berikut:
-
-    DB_NAME="e-commerce"
-    DB_USER="root"
-    DB_PASS="your_password"
-    DB_HOST="127.0.0.1"
-    DB_PORT="3306"
-    APP_PORT="8087"
-
-    Jalankan migrasi database untuk membuat tabel users:
-
-    go run main.go
-
-    Server akan otomatis menjalankan migrasi. Jika tidak ada error, tabel users akan dibuat di database Anda.
-
-Menjalankan Server
-
-Jalankan server aplikasi dari root proyek:
-
+# Jalankan server
 go run main.go
+```
 
-Server akan berjalan di http://localhost:8087.
-Menggunakan Go-Blueprint
+Server berjalan di: [http://localhost:8087](http://localhost:8087)
 
-Go-Blueprint adalah sebuah scaffolding tool yang membantu Anda membuat struktur proyek Go dengan cepat.
-Instalasi
+---
+![logo](./public/logo.png)
 
-Anda dapat menginstalnya dengan perintah Go:
+<div style="text-align: center;">
+  <h1>
+    Introducing the Ultimate Golang Blueprint Library
+  </h1>
+</div>
 
+
+Gunakan **Go-Blueprint** untuk membuat struktur proyek Go dengan cepat.
+
+### Instalasi
+```bash
 go install github.com/Melkeydev/go-blueprint@latest
+```
 
-Cara Penggunaan
+Gunakan **Go-Blueprint** untuk membuat struktur proyek Go dengan cepat.
 
-Untuk membuat proyek baru dari awal, Anda akan menjalankan perintah go-blueprint dan memilih arsitektur yang Anda inginkan. Contoh:
-
+### Cara Penggunaan
+```bash
 go-blueprint
+```
+source Go-Blueprint: https://github.com/Melkeydev/go-blueprint.git
+## 📁 Struktur Proyek
 
-Tautan ke sumber daya Go-Blueprint: https://github.com/Melkeydev/go-blueprint.git
-📁 Struktur Proyek
+```
+e-commerce-expo-go-api/
+│── config/       # Konfigurasi database
+│── controller/   # Handler API
+│── dto/          # DTO
+│── helper/       # Utility & JWT
+│── migrations/   # Migrasi SQL
+│── model/        # Model data
+│── repository/   # Query DB
+│── service/      # Logika bisnis
+│── main.go       # Entry point
+```
 
-Proyek ini menggunakan arsitektur berlapis untuk pemisahan tanggung jawab yang jelas. Berikut adalah penjelasan singkat tentang setiap folder:
+---
 
-    config/: Berisi konfigurasi untuk koneksi database.
+## 🔗 API Endpoints
 
-    controller/: Menangani permintaan HTTP dan respons API.
+### 👤 Registrasi Pengguna  
+**POST** `/api/v1/user`  
 
-    dto/: Berisi objek transfer data.
+#### Request
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@mail.com",
+  "password": "secret"
+}
+```
 
-    helper/: Berisi fungsi-fungsi utilitas untuk penanganan error dan JWT.
+#### Response Success
+```json
+{
+  "status": "success",
+  "message": "User registered successfully",
+  "data": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@mail.com"
+  }
+}
+```
 
-    migrations/: Menyimpan file-file migrasi SQL untuk mengelola skema database.
+#### Response Error
+```json
+{
+  "status": "error",
+  "message": "Email already exists"
+}
+```
 
-    model/: Berisi model data untuk entitas database.
+---
 
-    repository/: Berisi logika untuk berinteraksi langsung dengan database.
+### 🔑 Login Pengguna  
+**POST** `/api/v1/user/login`  
 
-    service/: Berisi logika bisnis utama aplikasi.
+#### Request
+```json
+{
+  "email": "johndoe@mail.com",
+  "password": "secret"
+}
+```
 
-🔗 API Endpoints
+#### Response Success
+```json
+{
+  "status": "success",
+  "message": "Login successful",
+  "token": "your_jwt_token_here"
+}
+```
 
-Berikut adalah daftar API endpoints yang tersedia untuk manajemen pengguna:
+#### Response Error
+```json
+{
+  "status": "error",
+  "message": "Invalid credentials"
+}
+```
 
-    POST /api/v1/user
+---
 
-        Deskripsi: Mendaftarkan pengguna baru dengan payload JSON yang berisi nama, email, dan password.
+## 📚 Referensi
+- [📖 Dokumentasi Go](https://go.dev/doc/)
+- [Go by Example](https://gobyexample.com/)
 
-    POST /api/v1/user/login
+---
 
-        Deskripsi: Autentikasi pengguna dengan payload JSON yang berisi email dan password.
-
-📚 Pelajari Lebih Lanjut
-
-Untuk mempelajari lebih lanjut tentang pengembangan Go, lihat sumber daya berikut:
-
-    Dokumentasi Go: Pelajari dasar-dasar, atau selami topik-topik lanjutan dengan tutorial dan panduan resmi.
-
-    Go by Example: Ikuti tutorial langkah demi langkah untuk memahami bahasa Go.
-
-🤝 Bergabung dengan Komunitas
-
-Bergabunglah dengan komunitas developer yang membuat aplikasi Go yang hebat.
-
-    Go on GitHub: Lihat platform open source dan berkontribusi.
-
-    Komunitas Discord Go: Mengobrol dengan pengguna Go dan mengajukan pertanyaan.
+## 🤝 Komunitas Go
+- [Go on GitHub](https://github.com/golang/go)
+- [Go Discord Community](https://discord.gg/golang)
+s
