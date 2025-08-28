@@ -57,7 +57,7 @@ go run main.go
 Server berjalan di: [http://localhost:8087](http://localhost:8087)
 
 ---
-![logo](./public/logo.png)
+![logo](https://github.com/Nur-Hidayat-FTI22E/go-blueprint/raw/main/public/logo.png)
 
 <div style="text-align: center;">
   <h1>
